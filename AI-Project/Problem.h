@@ -5,6 +5,8 @@
 #include"Node.h"
 class Problem
 {
+private:
+	
 public:
 	Node* initial;
 	Node* goal;
@@ -12,7 +14,7 @@ public:
 	Problem(Node* _initial, Node* _goal) : initial(_initial), goal(_goal) { }
 	bool isGoal(Node* node);
 	vector<Edge*> extract(Node* node, Edge* prev);
-
+	bool find(vector<Node*>, Node*);
 	Edge* DFS();
 
 };

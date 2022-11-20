@@ -23,7 +23,7 @@ int main()
 	Edge::create(alex, giza, 10);
 	Edge::create(giza, aswan, 5); 
 
-	Problem problem(cairo, aswan);  */   
+	Problem problem(cairo, aswan);*/     
 	// --- End Map --- //
 
 
@@ -38,26 +38,27 @@ int main()
 		{4, 5, 3},
 		{7, 8, 6},
 	};
+
 	Node* initialNode = new Puzzle(initial, Point(2, 2));
 	Node* goalNode = new Puzzle(goal, Point(2, 1));
+	cout << (initialNode == goalNode) << endl;
 
 	Problem problem(initialNode, goalNode);
 	// --- End Puzzle --- //
 
 
 	Edge* solution = problem.DFS();
-
+	cout << "---------\n";
 	traceBack(solution);
 	return 0;
 }
 void traceBack(Edge* edge)
 {
 	int totalCost = 0;
+	edge->child->print();
 	while (edge != NULL) {
-		cout << "From: " << endl;
+		cout << "<-\n";
 		edge->parent->print();
-		cout << "To: " << endl;
-		edge->child->print();
 		totalCost += edge->cost;
 		edge = edge->prev;
 	}

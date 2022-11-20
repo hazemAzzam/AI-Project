@@ -18,5 +18,6 @@ Edge* Edge::create(Node* _parent, Node* _child, int _cost, Edge* prev)
 {
 	Edge* newEdge = new Edge(_parent, _child, _cost, prev);
 	_parent->children.push_back(newEdge);
+
 	return newEdge;
 }

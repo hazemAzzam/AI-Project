@@ -29,12 +29,12 @@ private:
 public:
 	int id;
 	int n = 3;
-	vector<vector<int>> puzzle;
+	vector<vector<int>> data;
 	Point pivot;
 
 	bool compare(Node* node);
 	void print();
-	Puzzle(vector<vector<int>> _puzzle, Point _pivot) : puzzle(_puzzle), pivot(_pivot) { }
+	Puzzle(vector<vector<int>> _puzzle, Point _pivot) : data(_puzzle), pivot(_pivot) { }
 	void getChildren();	
 };
 
