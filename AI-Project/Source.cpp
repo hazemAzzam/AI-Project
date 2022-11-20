@@ -4,13 +4,14 @@
 #include"Node.h"
 #include"Map.h"
 #include"Problem.h"
-
+#include"Puzzle.h"
 
 using namespace std;
 void traceBack(Edge* edge);
 int main()
 {
-	Node* cairo = new Map("Cairo");
+	// --- Start Map --- //
+	/*Node* cairo = new Map("Cairo");
 	Node* alex = new Map("Alex");
 	Node* giza = new Map("Giza");
 	Node* aswan = new Map("Aswan");
@@ -20,36 +21,56 @@ int main()
 	Edge::create(cairo, giza, 5);
 	Edge::create(alex, aswan, 5);
 	Edge::create(alex, giza, 10);
-	Edge::create(giza, aswan, 5);
+	Edge::create(giza, aswan, 5); 
 
-	Problem problem(cairo, aswan);
+	Problem problem(cairo, aswan);  */   
+	// --- End Map --- //
 
 
-	//vector<vector<int>> initial = {
-	//	{1, 2, 3},
-	//	{4, 5, 6},
-	//	{7, 8, 0},
-	//};
-	//vector<vector<int>> goal = {
-	//	{1, 2, 3},
-	//	{4, 5, 6},
-	//	{7, 0, 8},
-	//};
-	//Node* initialNode = new Puzzle(initial, Point(2, 2));
-	//Node* goalNode = new Puzzle(goal, Point(2, 1));
-	///*Node::create(initialNode);
-	//Node::create(goalNode);*/
-	//Problem problem(initialNode, goalNode);
+	// --- Start Puzzle --- //
+	vector<vector<int>> initial = {
+		{1, 2, 3},
+		{4, 5, 6},
+		{7, 8, 0},
+	};
+	vector<vector<int>> goal = {
+		{1, 0, 2},
+		{4, 5, 3},
+		{7, 8, 6},
+	};
+	Node* initialNode = new Puzzle(initial, Point(2, 2));
+	Node* goalNode = new Puzzle(goal, Point(2, 1));
+
+	Problem problem(initialNode, goalNode);
+	// --- End Puzzle --- //
+
+
 	Edge* solution = problem.DFS();
 
 	traceBack(solution);
 	return 0;
 }
-
 void traceBack(Edge* edge)
 {
-	if (edge == NULL)
-		return;
-	traceBack(edge->prev);
-	cout << static_cast<Map*>(edge->parent)->name << " -> " << static_cast<Map*>(edge->child)->name << endl;
+	int totalCost = 0;
+	while (edge != NULL) {
+		cout << "From: " << endl;
+		edge->parent->print();
+		cout << "To: " << endl;
+		edge->child->print();
+		totalCost += edge->cost;
+		edge = edge->prev;
+	}
+	cout << "Cost: " << totalCost << endl;
 }
+//void traceBack(Edge* edge)
+//{
+//	if (edge == NULL)
+//		return;
+//
+//	traceBack(edge->prev);
+//	cout << "From: " << endl;
+//	edge->parent->print(); 
+//	cout << "To: " << endl;
+//	edge->parent->print();
+//}

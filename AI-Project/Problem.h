@@ -14,5 +14,6 @@ public:
 	vector<Edge*> extract(Node* node, Edge* prev);
 
 	Edge* DFS();
+
 };
 
