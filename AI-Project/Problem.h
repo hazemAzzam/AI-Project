@@ -12,8 +12,9 @@ public:
 	Problem(Node* _initial, Node* _goal) : initial(_initial), goal(_goal) { }
 	bool isGoal(Node* node);
 	vector<Edge*> extract(Node* node, Edge* prev);
-
-	Edge* DFS();
+	bool find(vector<Node*>, Node*);
+	Edge* BFS();
+	Edge* PBFS();
 
 };
 

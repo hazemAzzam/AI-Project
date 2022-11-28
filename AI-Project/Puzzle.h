@@ -8,7 +8,7 @@ using namespace std;
 struct Point
 {
 	int x, y;
-	Point(int _x, int _y) : x(_x), y(_y) { }
+	Point(int _x = 0, int _y = 0) : x(_x), y(_y) { }
 	Point operator+(const Point p) {
 		return Point(x + p.x, y + p.y);
 	}
@@ -25,16 +25,17 @@ class Puzzle : public Node
 private:
 	bool isPossibleMove(Point point);
 	Puzzle* move(Point point);
-
+	vector<vector<int>> goal;
 public:
-	int id;
+	int cost = 0;
 	int n = 3;
-	vector<vector<int>> puzzle;
+	vector<vector<int>> data;
 	Point pivot;
 
 	bool compare(Node* node);
 	void print();
-	Puzzle(vector<vector<int>> _puzzle, Point _pivot) : puzzle(_puzzle), pivot(_pivot) { }
+	Puzzle(vector<vector<int>> _puzzle, vector<vector<int>> _goal);
+
 	void getChildren();	
 };
 
