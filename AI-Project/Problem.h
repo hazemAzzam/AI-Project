@@ -3,6 +3,8 @@
 #include<vector>
 #include<queue>
 #include"Node.h"
+#include<stack>
+
 class Problem
 {
 public:
